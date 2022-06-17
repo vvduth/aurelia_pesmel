@@ -1,0 +1,52 @@
+<template>
+  <h1>${heading}</h1>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">
+          Time
+        </th>
+        <th scope="col">
+          Air temperature
+        </th>
+        <th scope="col">
+          Day
+        </th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr repeat.for="item of state.weatherItems">
+        <td>
+          ${item.time}
+        </td>
+        <td>
+          ${item.air_temp}
+        </td>
+        <td>
+          ${item.day}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <nav aria-label="Page navigation example">
+    <p> You are in ${state.currentPage} of  ${state.pagesLength} pages</p>
+    <ul class="pagination">
+      <li if.bind="state.currentPage!=0" class="page-item"><button class="page-link" click.trigger="dispatchDemo(state.currentPage -1 )" >Previous</button></li>
+      <li class="page-item"><a class="page-link"  click.trigger="dispatchDemo(state.currentPage)">${state.currentPage }</a></li>
+      <li class="page-item"><button class="page-link" click.trigger="dispatchDemo(state.currentPage +1)">${state.currentPage +1 }</button></li>
+      <li class="page-item"><button class="page-link" click.trigger="dispatchDemo(state.currentPage+2)">${state.currentPage +2}</button></li>
+      <li><a class="page-link" href="#">....</a></li>
+      
+      <li class="page-item"><button class="page-link" click.trigger="dispatchDemo(state.currentPage + 1 )">Next</button></li>
+    </ul>
+  </nav>
+  
+   
+</div>
+
+
+
+</template>
