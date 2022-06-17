@@ -1,52 +1,31 @@
 <template>
-  <h1>${heading}</h1>
-
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">
-          Time
-        </th>
-        <th scope="col">
-          Air temperature
-        </th>
-        <th scope="col">
-          Day
-        </th>
-        
-      </tr>
-    </thead>
-    <tbody>
-      <tr repeat.for="item of state.weatherItems">
-        <td>
-          ${item.time}
-        </td>
-        <td>
-          ${item.air_temp}
-        </td>
-        <td>
-          ${item.day}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <nav aria-label="Page navigation example">
-    <p> You are in ${state.currentPage} of  ${state.pagesLength} pages</p>
-    <ul class="pagination">
-      <li if.bind="state.currentPage!=0" class="page-item"><button class="page-link" click.trigger="dispatchDemo(state.currentPage -1 )" >Previous</button></li>
-      <li class="page-item"><a class="page-link"  click.trigger="dispatchDemo(state.currentPage)">${state.currentPage }</a></li>
-      <li class="page-item"><button class="page-link" click.trigger="dispatchDemo(state.currentPage +1)">${state.currentPage +1 }</button></li>
-      <li class="page-item"><button class="page-link" click.trigger="dispatchDemo(state.currentPage+2)">${state.currentPage +2}</button></li>
-      <li><a class="page-link" href="#">....</a></li>
-      
-      <li class="page-item"><button class="page-link" click.trigger="dispatchDemo(state.currentPage + 1 )">Next</button></li>
-    </ul>
+  <!-- <ul repeat.for="nav of router.navigation">
+      <li class="${nav.isActive ? 'active' : ''}"><a href.bind="nav.href">${nav.title}</a></li>
+  </ul> -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Weather App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#/weather">Raw Data</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#/weather">Day</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Month</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Year</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
-  
-   
-</div>
-
-
-
+  <router-view></router-view>
 </template>
+ 
