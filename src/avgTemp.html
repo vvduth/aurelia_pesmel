@@ -1,18 +1,13 @@
 <template>
   <div class="container mt-5">
-    <h1 class="col-sm-4">${heading}</h1>
+    <h1 class="col-sm-6">${heading}</h1>
 
     <p></p>
     <div class="table table-responsive  w-100 d-block d-md-table">
       <table class="table align-middle table-hover table-bordered">
         <thead class="table-dark">
           <tr>
-            <th scope="col">
-              Time
-            </th>
-            <th scope="col">
-              Air temperature
-            </th>
+            
             <th scope="col">
               Day
             </th>
@@ -22,31 +17,33 @@
             <th scope="col">
               Year
             </th>
+            <th scope="col">
+              Air temperature (deg C)
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr repeat.for="item of state.weatherItems">
-            <td scope="row">
-              ${item.time}
-            </td>
-            <td>
-              ${item.air_temp}
-            </td>
+            
+            
             <td>
               ${item.day}
             </td>
             <td>
-              ${item.month}
+              ${item.month} 
             </td>
             <td>
               ${item.year}
+            </td>
+            <td>
+              ${item.air_temp} 
             </td>
           </tr>
         </tbody>
       </table>
     </div>
     <nav aria-label="Page navigation example">
-      <p> You are in ${state.currentPage} of ${state.pagesLength} pages</p>
+      <p> You are in page ${state.currentPage} </p>
       <ul class="pagination">
         <li if.bind="state.currentPage!=0" class="page-item"><button class="page-link"
             click.trigger="dispatchDemo(state.currentPage -1 )">Previous</button></li>
@@ -63,13 +60,5 @@
       </ul>
     </nav>
 
-
   </div>
-
-  </div>
-
-
-
-
-
 </template>

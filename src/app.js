@@ -8,6 +8,7 @@ export class App {
     config.map([
       { route: ['', 'home'],       name: 'home',       moduleId: PLATFORM.moduleName('home.html') },
       { route: 'weather',            name: 'weater',      moduleId: PLATFORM.moduleName('weather'), nav: true, title: 'Weather' },
+      { route: 'avg',            name: 'average',      moduleId: PLATFORM.moduleName('avgTemp'), nav: true, title: 'Average' },
     ]);
   }
 }
