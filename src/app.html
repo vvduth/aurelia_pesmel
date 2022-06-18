@@ -1,7 +1,4 @@
 <template>
-  <!-- <ul repeat.for="nav of router.navigation">
-      <li class="${nav.isActive ? 'active' : ''}"><a href.bind="nav.href">${nav.title}</a></li>
-  </ul> -->
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class="container-fluid">
       <ul class="navbar-nav">
@@ -12,10 +9,13 @@
           <a class="nav-link" href="#/weather">Raw Data</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Average</a>
+          <a class="nav-link" href="#/avg">Average</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
+          <a class="nav-link" href="#/max">Maximum</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#/min">Minimum</a>
         </li>
       </ul>
     </div>

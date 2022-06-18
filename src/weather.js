@@ -14,7 +14,7 @@ export class Weather {
     this.store.registerAction('weatherAction', fetchWeatherAction)
     this.store.registerAction('pageNumberAction', updatePageLength)
     this.store.state.pagesLength = this.dispatchPageNumber() 
-    this.store.state.weatherItems = this.dispatchDemo(0) 
+    this.store.state.weatherItems = this.dispatchDemo('all2?pageSize=12&pageNo=',1) 
   }
   bind() {
     this.subscription = this.store.state.subscribe(
@@ -26,8 +26,8 @@ export class Weather {
     this.subscription.unsubscribe();
   }
 
-  dispatchDemo(num) {
-    this.store.dispatch(fetchWeatherAction,num );
+  dispatchDemo(endpoint, num) {
+    this.store.dispatch(fetchWeatherAction,endpoint, num );
 
     // or
     // this.store.dispatch('DemoAction', nextFramework);

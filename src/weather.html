@@ -49,17 +49,17 @@
       <p> You are in ${state.currentPage} of ${state.pagesLength} pages</p>
       <ul class="pagination">
         <li if.bind="state.currentPage!=0" class="page-item"><button class="page-link"
-            click.trigger="dispatchDemo(state.currentPage -1 )">Previous</button></li>
+            click.trigger="dispatchDemo('all2?pageSize=12&pageNo=', state.currentPage -1 )">Previous</button></li>
         <li class="page-item"><a class="page-link" click.trigger="dispatchDemo(state.currentPage)">${state.currentPage
             }</a></li>
         <li class="page-item"><button class="page-link"
-            click.trigger="dispatchDemo(state.currentPage +1)">${state.currentPage +1 }</button></li>
+            click.trigger="dispatchDemo('all2?pageSize=12&pageNo=', state.currentPage +1)">${state.currentPage +1 }</button></li>
         <li class="page-item"><button class="page-link"
-            click.trigger="dispatchDemo(state.currentPage+2)">${state.currentPage +2}</button></li>
+            click.trigger="dispatchDemo('all2?pageSize=12&pageNo=',state.currentPage+2)">${state.currentPage +2}</button></li>
         <li><a class="page-link" href="#">....</a></li>
 
         <li class="page-item"><button class="page-link"
-            click.trigger="dispatchDemo(state.currentPage + 1 )">Next</button></li>
+            click.trigger="dispatchDemo('all2?pageSize=12&pageNo=',state.currentPage + 1 )">Next</button></li>
       </ul>
     </nav>
 

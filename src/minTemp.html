@@ -1,20 +1,20 @@
 <template>
   <div class="container mt-5">
-    <h1 if.bind="state.tableType==='list/avg/day'" class="col-sm-6">${heading} by Day </h1>
-    <h1 if.bind="state.tableType==='list/avg/month'" class="col-sm-6">${heading} by Month </h1>
-    <h1 if.bind="state.tableType==='list/avg/year'" class="col-sm-6">${heading} by Year </h1>
-    <button click.trigger="dispatchDemo('list/avg/day?page=',0)">Day</button>
-    <button click.trigger="dispatchDemo('list/avg/month','')">Month</button>
-    <button click.trigger="dispatchDemo('list/avg/year','')">Year</button>
+    <h1 if.bind="state.tableType==='list/min/day'" class="col-sm-6">${heading} by Day </h1>
+    <h1 if.bind="state.tableType==='list/min/month'" class="col-sm-6">${heading} by Month </h1>
+    <h1 if.bind="state.tableType==='list/min/year'" class="col-sm-6">${heading} by Year </h1>
+    <button click.trigger="dispatchDemo('list/min/day?page=',0)">Day</button>
+    <button click.trigger="dispatchDemo('list/min/month','')">Month</button>
+    <button click.trigger="dispatchDemo('list/min/year','')">Year</button>
     <div class="table table-responsive  w-100 d-block d-md-table">
       <table class="table align-middle table-hover table-bordered">
         <thead class="table-dark">
           <tr>
             
-            <th if.bind="state.tableType==='list/avg/day'" scope="col">
+            <th if.bind="state.tableType==='list/min/day'" scope="col">
               Day
             </th>
-            <th if.bind="state.tableType!=='list/avg/year'" scope="col">
+            <th if.bind="state.tableType!=='list/min/year'" scope="col">
               Month
             </th>
             <th  scope="col">
@@ -29,10 +29,10 @@
           <tr repeat.for="item of state.weatherItems">
             
             
-            <td if.bind="state.tableType==='list/avg/day'">
+            <td if.bind="state.tableType==='list/min/day'">
               ${item.day}
             </td>
-            <td if.bind="state.tableType!=='list/avg/year'">
+            <td if.bind="state.tableType!=='list/min/year'">
               ${item.month} 
             </td>
             <td>
@@ -45,21 +45,21 @@
         </tbody>
       </table>
     </div>
-    <nav if.bind="state.tableType==='list/avg/day'" aria-label="Page navigation example">
+    <nav if.bind="state.tableType==='list/min/day'" aria-label="Page navigation example">
       <p> You are in page ${state.currentPage} </p>
       <ul class="pagination">
         <li if.bind="state.currentPage!=0" class="page-item"><button class="page-link"
-            click.trigger="dispatchDemo('list/avg/day?page=',state.currentPage -1 )">Previous</button></li>
+            click.trigger="dispatchDemo('list/min/day?page=',state.currentPage -1 )">Previous</button></li>
         <li class="page-item"><a class="page-link" click.trigger="dispatchDemo(state.currentPage)">${state.currentPage
             }</a></li>
         <li class="page-item"><button class="page-link"
-            click.trigger="dispatchDemo('list/avg/day?page=',state.currentPage +1)">${state.currentPage +1 }</button></li>
+            click.trigger="dispatchDemo('list/min/day?page=',state.currentPage +1)">${state.currentPage +1 }</button></li>
         <li class="page-item"><button class="page-link"
-            click.trigger="dispatchDemo('list/avg/day?page=',state.currentPage+2)">${state.currentPage +2}</button></li>
+            click.trigger="dispatchDemo('list/min/day?page=',state.currentPage+2)">${state.currentPage +2}</button></li>
         <li><a class="page-link" href="#">....</a></li>
 
         <li class="page-item"><button class="page-link"
-            click.trigger="dispatchDemo('list/avg/day?page=',state.currentPage + 1 )">Next</button></li>
+            click.trigger="dispatchDemo('list/min/day?page=',state.currentPage + 1 )">Next</button></li>
       </ul>
     </nav>
 

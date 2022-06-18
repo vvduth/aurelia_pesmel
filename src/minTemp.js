@@ -5,14 +5,14 @@ import { Store } from "../node_modules/aurelia-store";
 
 import { PLATFORM } from "aurelia-framework";
 @inject(Store)
-export class avgTemp {
+export class minTemp {
 
   
   constructor(store) {
-    this.heading = "Average Temperature"
+    this.heading = "min Temperature"
     this.store = store ; 
-    this.store.registerAction('AvgAction', fetchAvgWeatherAction);
-    this.store.state.weatherItems = this.dispatchDemo('list/avg/day?page=' ,0) 
+    this.store.registerAction('minAction', fetchAvgWeatherAction);
+    this.store.state.weatherItems = this.dispatchDemo('list/min/day?page=' ,0) 
   }
   bind() {
     this.subscription = this.store.state.subscribe(
