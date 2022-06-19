@@ -1,5 +1,5 @@
 
-import { fetchAvgWeatherAction, updatePageLength } from "./state";
+import { fetchAvgWeatherAction, sort,sortByDay } from "./state";
 import { inject } from "../node_modules/aurelia-dependency-injection";
 import { Store } from "../node_modules/aurelia-store";
 
@@ -12,7 +12,10 @@ export class avgTemp {
     this.heading = "Average Temperature"
     this.store = store ; 
     this.store.registerAction('AvgAction', fetchAvgWeatherAction);
+    this.store.registerAction('SortAction', sort);
+    this.store.registerAction('SortByDayAction', sortByDay);
     this.store.state.weatherItems = this.dispatchDemo('list/avg/day?page=' ,0) 
+    this.store.state.ascending = true
   }
   bind() {
     this.subscription = this.store.state.subscribe(
@@ -30,6 +33,13 @@ export class avgTemp {
     // or
     // this.store.dispatch('DemoAction', nextFramework);
   }
+  dispatchSort() {
+    this.store.dispatch(sort);
+  }
+  dispatchSortByDay() {
+    this.store.dispatch(sortByDay);
+  }
+  
   
 
 }

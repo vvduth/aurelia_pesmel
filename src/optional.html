@@ -1,0 +1,77 @@
+<template>
+  <div class="container mt-5">
+    <h1 class="col-sm-6">Optional Search and Observe Data</h1>
+    <form submit.trigger="submitHandler()">
+        <label class="form-label">Day </label> <input class="form-control" type="number" value.bind="day" placeholder="Enter day (1-31)"/> <br>
+        <label class="form-label">Month </label> <input class="form-control" type="number" value.bind="month" placeholder="Enter Month (1-12)"/> <br>
+        <label class="form-label">Year </label> <input class="form-control" type="number" value.bind="year" placeholder="Enter Year (2021/2022)"/> <br>
+        <button type="submit" >Search</button>
+        <br>
+        output: ${day} ${month}
+        <p if.bind="day===null">hehe</p>
+    </form>
+
+    <form>
+      <h4>Select type</h4>
+      <div class="mb-3">
+        <label><input type="checkbox" checked.bind="selectedType" model.bind="avg"> average</label><br>
+        <label><input  type="checkbox" checked.bind="selectedType" model.bind="max"> max</label><br>
+        <label><input  type="checkbox" checked.bind="selectedType" model.bind="min"> min</label><br>
+      </div>
+      <br>
+      selected : ${selectedType}
+      <p if.bind="selectedType.length > 1">Can only select one</p>
+    </form>
+    
+    <div if.bind="state.tableType !== avg" class="container mt-3">
+      <table class="table align-middle table-hover table-bordered">
+        <thead class="table-dark">
+          <tr>
+            
+            <th if.bind="state.tableType!=='avg'" click.trigger="dispatchSortByDay()" scope="col">
+              Day
+            </th>
+            <th if.bind="state.tableType!=='avg'" scope="col">
+              Month
+            </th>
+            <th if.bind="state.tableType!=='avg'" scope="col">
+              Time
+            </th>
+            <th scope="col">
+              Year
+            </th>
+            <th scope="col">
+              Air temperature (deg C)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="item of state.weatherItems">
+            
+            
+            <td if.bind="state.tableType!=='avg'">
+              ${item.day}
+            </td>
+            <td if.bind="state.tableType!=='avg'">
+              ${item.month} 
+            </td>
+            <td if.bind="state.tableType!=='avg'">
+              ${item.time}
+            </td>
+            <td>
+              ${item.year}
+            </td>
+            <td>
+              ${item.air_temp} 
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div if.bind="state.tableType === avg" >
+        Average air temperature for  ${day}/${month}/${year} is ${state.weatherItems[0]}  &#8451;
+    </div>
+
+  </div>
+</template>

@@ -3,10 +3,12 @@
     <h1 if.bind="state.tableType==='list/min/day'" class="col-sm-6">${heading} by Day </h1>
     <h1 if.bind="state.tableType==='list/min/month'" class="col-sm-6">${heading} by Month </h1>
     <h1 if.bind="state.tableType==='list/min/year'" class="col-sm-6">${heading} by Year </h1>
-    <button click.trigger="dispatchDemo('list/min/day?page=',0)">Day</button>
-    <button click.trigger="dispatchDemo('list/min/month','')">Month</button>
-    <button click.trigger="dispatchDemo('list/min/year','')">Year</button>
-    <div class="table table-responsive  w-100 d-block d-md-table">
+    <div class="container mt-3">
+      <button click.trigger="dispatchDemo('list/min/day?page=',0)">Day</button>
+      <button click.trigger="dispatchDemo('list/min/month','')">Month</button>
+      <button click.trigger="dispatchDemo('list/min/year','')">Year</button>
+    </div>
+    <div class="container mt-3">
       <table class="table align-middle table-hover table-bordered">
         <thead class="table-dark">
           <tr>
