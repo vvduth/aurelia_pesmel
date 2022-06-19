@@ -4,7 +4,7 @@
     <form submit.trigger="submitHandler()">
         <label class="form-label">Day </label> <input class="form-control" type="number" value.bind="day" placeholder="Enter day (1-31)"/> <br>
         <label class="form-label">Month </label> <input class="form-control" type="number" value.bind="month" placeholder="Enter Month (1-12)"/> <br>
-        <label class="form-label">Year </label> <input class="form-control" type="number" value.bind="year" placeholder="Enter Year (2021/2022)"/> <br>
+        <label class="form-label">Year </label> <input class="form-control" type="number" value.bind="year" required placeholder="Enter Year (2021/2022)"/> <br>
         <button type="submit" >Search</button>
         <br>
         output: ${day} ${month}
@@ -14,13 +14,21 @@
     <form>
       <h4>Select type</h4>
       <div class="mb-3">
-        <label><input type="checkbox" checked.bind="selectedType" model.bind="avg"> average</label><br>
-        <label><input  type="checkbox" checked.bind="selectedType" model.bind="max"> max</label><br>
-        <label><input  type="checkbox" checked.bind="selectedType" model.bind="min"> min</label><br>
+        <label><input type="checkbox" checked.bind="selectedType" model.bind="avg"> Average</label><br>
+        <label><input  type="checkbox" checked.bind="selectedType" model.bind="max"> Maximum</label><br>
+        <label><input  type="checkbox" checked.bind="selectedType" model.bind="min"> Minimum</label><br>
       </div>
       <br>
+      
       selected : ${selectedType}
-      <p if.bind="selectedType.length > 1">Can only select one</p>
+      <p class="alert alert-danger" role="alert" if.bind="selectedType.length > 1">Can only select one</p>
+
+      <p if.bind="selectedType.length === 0" class="alert alert-danger" role="alert">
+      
+          Please choose one of the type!
+        
+      </p>
+      
     </form>
     
     <div if.bind="state.tableType !== avg" class="container mt-3">
@@ -69,9 +77,9 @@
       </table>
     </div>
 
-    <div if.bind="state.tableType === avg" >
-        Average air temperature for  ${day}/${month}/${year} is ${state.weatherItems[0]}  &#8451;
-    </div>
+
+
+    <h1 if.bind="state.tableType === avg" class="col-sm-8">Average air temperature for  ${day + '/'}${month}/${year} is ${state.weatherItems[0]}  &#8451;</h1>
 
   </div>
 </template>
